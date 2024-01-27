@@ -43,13 +43,45 @@
 from flask import Flask, render_template, request
 import assemblyai as aai
 import pysrt
-aai.settings.api_key = "c9237cb068cb471689f9a4a98f5f1b34"
+aai.settings.api_key = "hid"
 from moviepy.video.io.VideoFileClip import VideoFileClip
 from moviepy.editor import CompositeVideoClip, TextClip
 
+from openai import OpenAI
 
+client = OpenAI(api_key="sk-hid")
 
 app = Flask(__name__)
+
+def read_text_from_file(file_path):
+    with open(file_path, "r") as file:
+        return file.read()
+
+def translate_text(prompt_text,language):
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {
+                "role": "system",
+                "content": f"You will be provided with a block of text , and your task is to convert the text into {language}. Don't mess up the timestamps.",
+            },
+            {"role": "user", "content": prompt_text},
+        ],
+        temperature=0.5,
+        max_tokens=1000,
+        top_p=1,
+    )
+    return response
+
+def handle_subtitles_different(language,file):
+    transcribed_text = read_text_from_file(file)
+    tags_response = translate_text(transcribed_text, language)
+
+    response_message = tags_response.choices[0].message.content
+
+    with open("static/translated_subtitles.txt", "w") as f:
+        f.write(response_message)
+    return response_message
 
 def video_to_audio(file_path, audio_file_path):
     video_clip = VideoFileClip(file_path)
@@ -149,7 +181,19 @@ def index():
             final_video.write_videofile(output_video_file)
 
             return render_template('video_with_subtitles.html', output_video_path=output_video_file)
+        elif action =="subtitles_different":
 
+            language = request.form.get('language')
+            video_file = request.files['file']
+            video_path = 'static/uploaded_video.mp4'
+            video_file.save(video_path)
+            transcript = aai.Transcriber().transcribe(video_path)
+            subtitles = transcript.export_subtitles_srt()
+            subtitles_path = 'static/generated_subtitles.srt'
+            with open(subtitles_path, 'w') as f:
+                f.write(subtitles)
+            final_sub=handle_subtitles_different(language,subtitles_path)
+            return render_template('subtitles_lang.html', subtitles=final_sub)
     return render_template('index.html')
 
 if __name__ == '__main__':

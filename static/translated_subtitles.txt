@@ -1,0 +1,51 @@
+1
+00:00:00,970 --> 00:00:03,360
+Samaya. Entrez. Oui, entrez. Merci.
+
+2
+00:00:05,090 --> 00:00:08,638
+Bonjour, monsieur. Bonjour. Bonjour, madame. Prenez un
+
+3
+00:00:08,644 --> 00:00:10,240
+siège. Un chad. Merci, monsieur.
+
+4
+00:00:12,050 --> 00:00:16,506
+Akshad Jain. Oui, monsieur. Donnez une brève description
+
+5
+00:00:16,538 --> 00:00:20,414
+de vous-même. Donc, je m'appelle Aksha Jain. J'ai 23 ans
+
+6
+00:00:20,452 --> 00:00:24,378
+Je suis né à Jaipur, Rajasthan, où j'ai fait mes études secondaires.
+
+7
+00:00:24,474 --> 00:00:28,098
+Et j'ai fait ma licence en design à l'IIT Guwahati.
+
+8
+00:00:28,194 --> 00:00:31,474
+Et mes intérêts incluent la forme physique, la natation, le football.
+
+9
+00:00:31,602 --> 00:00:34,886
+Et ceci est ma deuxième tentative à l'UPSC et
+
+10
+00:00:34,908 --> 00:00:38,706
+ma première entrevue. Nous examinons votre formulaire de candidature détaillé, monsieur. Et nous avons appris que vos deux
+
+11
+00:00:38,738 --> 00:00:42,406
+parents sont déjà fonctionnaires. Oui, monsieur. Ils sont dans la police
+
+12
+00:00:42,428 --> 00:00:45,746
+ou, monsieur, mon père est dans la police. Ma mère
+
+13
+00:00:45,778 --> 00:00:49,266
+est dans le service des impôts. Elle est dans la pluie.
